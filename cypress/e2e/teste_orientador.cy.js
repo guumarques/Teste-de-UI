@@ -1,5 +1,5 @@
 describe("Teste de Orientador", () => {
-    it('cadastro normal com sucesso', () => {
+  it('cadastro normal com sucesso', () => {
     let fazerLogin = login()
     let infos = createUser()
     cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0])
@@ -7,6 +7,20 @@ describe("Teste de Orientador", () => {
     cy.get(':nth-child(3) > .sc-bqOYya > .sc-gHjVMF').type(infos[2])
     cy.get(':nth-child(4) > .sc-irLvIq > .sc-csKJxZ').click()
     cy.get('.Toastify__toast-body > :nth-child(2)').should('contain.text', 'Usuário criado com sucesso!')
+  })
+
+  it('Cadastro com nome composto', () => {
+    let fazerLogin = login()
+    let infos = createUser()
+    cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0] + " " + infos[0] + " " + infos[0])
+    cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[1]  + "@gmail.com")
+    cy.get(':nth-child(3) > .sc-bqOYya > .sc-gHjVMF').type(infos[2])
+    cy.get(':nth-child(4) > .sc-irLvIq > .sc-csKJxZ').click()
+    cy.get('.Toastify__toast-body > :nth-child(2)').should('contain.text', 'Usuário criado com sucesso!')
+  })
+
+  it.skip('Cadastro com campos preenchidos no limite máximo permitido', () => {
+
   })
 })
 
