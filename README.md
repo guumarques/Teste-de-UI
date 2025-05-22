@@ -35,14 +35,14 @@ npm install mochawesome-merge --save-dev
 npm install mochawesome-report-generator --save-dev
 ```
 
-🚀 Executando os Testes
+## 🚀 Executando os Testes
 ▶️ Abrir o Cypress com interface gráfica (modo interativo)
 
 ```bash
 npx cypress open
 ```
 
-🧪 Executar todos os testes em modo headless (terminal)
+## 🧪 Executar todos os testes em modo headless (terminal)
 
 ```bash
 npx cypress run --reporter mochawesome
