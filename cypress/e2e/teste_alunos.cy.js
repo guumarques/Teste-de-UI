@@ -1,7 +1,7 @@
-describe("cadastro de usuários", () => {
+describe("cadastro de alunos", () => {
 
   //testes positivos
-  it('cadastro normal com sucesso', () => {
+  it('cadastro completo com sucesso', () => {
     let fazerLogin = login()
     let infos = createUser()
     cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0])

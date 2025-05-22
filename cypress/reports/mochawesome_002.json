@@ -1,0 +1,200 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-22T19:33:31.667Z",
+    "end": "2025-05-22T19:34:49.128Z",
+    "duration": 77461,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d51f2041-4b30-4b0a-9ca8-fd132c406c27",
+      "title": "",
+      "fullFile": "cypress\\e2e\\teste_projetos.cy.js",
+      "file": "cypress\\e2e\\teste_projetos.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "59194ffc-4c35-4337-9597-ec32ce80938f",
+          "title": "Teste de projetos",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Criação de projeto vazio",
+              "fullTitle": "Teste de projetos Criação de projeto vazio",
+              "timedOut": null,
+              "duration": 2640,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login();\ncy.get('[href=\"/adm/projetos\"]').click();\ncy.get('.sc-jdHILj > svg').click();\ncy.get('[href=\"/adm/add-projeto/cadastro\"]').click();\ncy.get('.sc-eGgGjL > :nth-child(1)').click(); // botão de criar equipe\ncy.get('.Toastify__toast-body > :nth-child(2)').should('contain.text', 'Por favor, adicione o nome do projeto');",
+              "err": {},
+              "uuid": "d68106dc-d1ee-401e-9086-e27804860d76",
+              "parentUUID": "59194ffc-4c35-4337-9597-ec32ce80938f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Criação de projeto",
+              "fullTitle": "Teste de projetos Criação de projeto",
+              "timedOut": null,
+              "duration": 13964,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login();\nlet users = gerarListaDeUsers(4);\nlet nomeProjeto = gerarNomeProjeto();\nlet orientador = gerarUser();\ncriarUser(orientador, true);\ncriarProjeto(users, nomeProjeto, orientador);",
+              "err": {},
+              "uuid": "78b00a80-e067-4271-8795-73e67537bc35",
+              "parentUUID": "59194ffc-4c35-4337-9597-ec32ce80938f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Busca de projeto",
+              "fullTitle": "Teste de projetos Busca de projeto",
+              "timedOut": null,
+              "duration": 14350,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login();\nlet users = gerarListaDeUsers(4);\nlet nomeProjeto = gerarNomeProjeto();\nlet orientador = gerarUser();\ncriarUser(orientador, true);\ncriarProjeto(users, nomeProjeto, orientador);\nacessarProjetoExistente(nomeProjeto);",
+              "err": {},
+              "uuid": "9636dc02-a7ce-4906-a3ac-a3b0fea2485f",
+              "parentUUID": "59194ffc-4c35-4337-9597-ec32ce80938f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Modificar nome do projeto",
+              "fullTitle": "Teste de projetos Modificar nome do projeto",
+              "timedOut": null,
+              "duration": 14830,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login();\nlet users = gerarListaDeUsers(4);\nlet nomeProjeto = gerarNomeProjeto();\nlet orientador = gerarUser();\ncriarUser(orientador, true);\ncriarProjeto(users, nomeProjeto, orientador);\nacessarProjetoExistente(nomeProjeto);\nmodificarNomeProjeto(nomeProjeto);",
+              "err": {},
+              "uuid": "8d3329af-071c-4a04-9174-cfc0f87aed50",
+              "parentUUID": "59194ffc-4c35-4337-9597-ec32ce80938f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deletar projeto",
+              "fullTitle": "Teste de projetos Deletar projeto",
+              "timedOut": null,
+              "duration": 14987,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login();\nlet users = gerarListaDeUsers(4);\nlet nomeProjeto = gerarNomeProjeto();\nlet orientador = gerarUser();\ncriarUser(orientador, true);\ncriarProjeto(users, nomeProjeto, orientador);\nacessarProjetoExistente(nomeProjeto);\ncy.get('.sc-iCKXBC > [viewBox=\"0 0 448 512\"]').click(); // deletar\ncy.get('.sc-cZpZpK > :nth-child(1)').click();\ncy.get('[href=\"/adm/projetos\"]').click();\ncy.get('.sc-ckdEwu').type(nomeProjeto);\ncy.get('.sc-gjLLEI').should('not.exist');",
+              "err": {},
+              "uuid": "818e858d-6bbf-40f2-9a7b-5a0d9d603306",
+              "parentUUID": "59194ffc-4c35-4337-9597-ec32ce80938f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deletar membros do projeto",
+              "fullTitle": "Teste de projetos Deletar membros do projeto",
+              "timedOut": null,
+              "duration": 15195,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login();\nlet users = gerarListaDeUsers(4);\nlet nomeProjeto = gerarNomeProjeto();\nlet orientador = gerarUser();\ncriarUser(orientador, true);\ncriarProjeto(users, nomeProjeto, orientador);\nacessarProjetoExistente(nomeProjeto);\n// index de membro a partir de 0\nconst BotaoDeletarMembro = n => ':nth-child(' + n + 2 + ') > .sc-jiaSqj > .sc-hVcFVo';\nfor (let i = 0; i < 5; i++) {\n  cy.get(BotaoDeletarMembro(0)).click();\n  cy.get('.sc-bbxCgr > :nth-child(1)').click();\n}\ncy.get('.sc-cPtzlb > .sc-irLvIq > .sc-csKJxZ').should('exist');",
+              "err": {},
+              "uuid": "57289957-79c7-413d-aea0-c1ea17cbc836",
+              "parentUUID": "59194ffc-4c35-4337-9597-ec32ce80938f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d68106dc-d1ee-401e-9086-e27804860d76",
+            "78b00a80-e067-4271-8795-73e67537bc35",
+            "9636dc02-a7ce-4906-a3ac-a3b0fea2485f",
+            "8d3329af-071c-4a04-9174-cfc0f87aed50",
+            "818e858d-6bbf-40f2-9a7b-5a0d9d603306",
+            "57289957-79c7-413d-aea0-c1ea17cbc836"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 75966,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

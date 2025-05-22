@@ -1,6 +1,6 @@
 describe("Teste de Orientador", () => {
-  it('cadastro normal com sucesso', () => {
-    let fazerLogin = login()
+  it('Cadastro normal com sucesso', () => {
+    login()
     let infos = createUser()
     cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0])
     cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[1]  + "@gmail.com")
@@ -10,7 +10,7 @@ describe("Teste de Orientador", () => {
   })
 
   it('Cadastro com nome composto', () => {
-    let fazerLogin = login()
+    login()
     let infos = createUser()
     cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0] + " " + infos[0] + " " + infos[0])
     cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[1]  + "@gmail.com")
@@ -19,9 +19,56 @@ describe("Teste de Orientador", () => {
     cy.get('.Toastify__toast-body > :nth-child(2)').should('contain.text', 'Usuário criado com sucesso!')
   })
 
-  it.skip('Cadastro com campos preenchidos no limite máximo permitido', () => {
-
+  it('Cadastro com e-mail institucional', () => {
+    login()
+    let infos = createUser()
+    cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0])
+    cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[1]  + "@orientador.inatel.br")
+    cy.get(':nth-child(3) > .sc-bqOYya > .sc-gHjVMF').type(infos[2])
+    cy.get(':nth-child(4) > .sc-irLvIq > .sc-csKJxZ').click()
+    cy.get('.Toastify__toast-body > :nth-child(2)').should('contain.text', 'Usuário criado com sucesso!')
   })
+
+  it('Cadastro com nome e e-mail com hífen', () => {
+    login()
+    let infos = createUser()
+    cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("usuário" + infos[0])
+    cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').type("usuário" + infos[1]  + "@orientador.inatel.br")
+    cy.get(':nth-child(3) > .sc-bqOYya > .sc-gHjVMF').type(infos[2])
+    cy.get(':nth-child(4) > .sc-irLvIq > .sc-csKJxZ').click()
+    cy.get('.Toastify__toast-body > :nth-child(2)').should('contain.text', 'Usuário criado com sucesso!')
+  })
+
+  it('Cadastro com e-mail já cadastrado', () => {
+    login()
+    let infos = createUser()
+    cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0])
+    cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[1]  + "@gmail.com")
+    cy.get(':nth-child(3) > .sc-bqOYya > .sc-gHjVMF').type(infos[2])
+    cy.get(':nth-child(4) > .sc-irLvIq > .sc-csKJxZ').click()
+
+    cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').clear()
+    cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').clear()
+    cy.get(':nth-child(3) > .sc-bqOYya > .sc-gHjVMF').clear()
+    
+    cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0])
+    cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[1]  + "@gmail.com")
+    cy.get(':nth-child(3) > .sc-bqOYya > .sc-gHjVMF').type(infos[2])
+    cy.get(':nth-child(4) > .sc-irLvIq > .sc-csKJxZ').click()
+    cy.get('#\\32  > .Toastify__toast-body > :nth-child(2)').should('contain.text', 'Falha ao criar usuário.')
+  })
+
+  it('Cadastro com e-mail em formato inválido', () => {
+    login()
+    let infos = createUser()
+
+    cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0])
+    cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[1]  + "gmail.com")
+    cy.get(':nth-child(3) > .sc-bqOYya > .sc-gHjVMF').type(infos[2])
+    cy.get(':nth-child(4) > .sc-irLvIq > .sc-csKJxZ').click()
+    cy.get('.Toastify__toast-body > :nth-child(2)').should('contain.text', 'Por favor, insira um endereço de email válido.')
+  })
+
 })
 
 
