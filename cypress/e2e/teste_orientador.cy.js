@@ -19,8 +19,14 @@ describe("Teste de Orientador", () => {
     cy.get('.Toastify__toast-body > :nth-child(2)').should('contain.text', 'Usuário criado com sucesso!')
   })
 
-  it.skip('Cadastro com campos preenchidos no limite máximo permitido', () => {
-
+  it('Cadastro com e-mail contendo subdomínio', () => {
+    let fazerLogin = login()
+    let infos = createUser()
+    cy.get(':nth-child(1) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[0])
+    cy.get(':nth-child(2) > .sc-bqOYya > .sc-gHjVMF').type("user" + infos[1]  + "@orientador.inatel.br")
+    cy.get(':nth-child(3) > .sc-bqOYya > .sc-gHjVMF').type(infos[2])
+    cy.get(':nth-child(4) > .sc-irLvIq > .sc-csKJxZ').click()
+    cy.get('.Toastify__toast-body > :nth-child(2)').should('contain.text', 'Usuário criado com sucesso!')
   })
 })
 
